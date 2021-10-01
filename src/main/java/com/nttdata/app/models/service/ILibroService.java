@@ -1,12 +1,11 @@
 package com.nttdata.app.models.service;
 
 import java.util.List;
-import java.util.Optional;
 
 import com.nttdata.app.models.entity.Libro;
 
 /**
- * Declaración de interfaz de proveedor de servicios.
+ * Declaración de metodos de comportamiento de Libro.
  * 
  * @author Jorge Heras
  * @version 0.1 29/09/2021
@@ -19,7 +18,7 @@ public interface ILibroService {
 	 * @param id del libro que se desea buscar
 	 * @return Retorna un objeto de tipo libro.
 	 */
-	public Optional<Libro> findById(Long idLibro);
+	public Libro findById(Long idLibro);
 
 	/**
 	 * Método que obtiene un listado de todos los libros.

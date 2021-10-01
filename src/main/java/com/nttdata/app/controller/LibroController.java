@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
 import java.util.Map;
-import java.util.Optional;
 import java.util.stream.Collectors;
 
 import javax.validation.Valid;
@@ -31,7 +30,9 @@ import com.nttdata.app.models.service.ILibroService;
 
 @Controller
 public class LibroController {
-
+	/**
+	 * Inyección de dependencias
+	 */
 	@Autowired
 	private ILibroService libroService;
 
@@ -119,7 +120,7 @@ public class LibroController {
 	 */
 	@GetMapping(value = "/nuevo-libro/{id}")
 	public String editarLibro(@PathVariable(value = "id") Long id, Map<String, Object> model) {
-		Optional<Libro> libro = Optional.empty();
+		Libro libro = new Libro();
 
 		if (id > 0) {
 			libro = libroService.findById(id);
@@ -182,7 +183,7 @@ public class LibroController {
 			libro.setGenero("Genero de libro " + i);
 			libros.add(libro);
 		}
-		
+
 		libroService.saveAll(libros);
 
 		return "redirect:listar-libros";

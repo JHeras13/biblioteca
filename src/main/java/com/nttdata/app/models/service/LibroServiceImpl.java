@@ -1,8 +1,6 @@
 package com.nttdata.app.models.service;
 
 import java.util.List;
-import java.util.Optional;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -11,8 +9,8 @@ import com.nttdata.app.models.dao.ILibroDao;
 import com.nttdata.app.models.entity.Libro;
 
 /**
- * Declaración de clase de servicio, que implementa metodos del proveedor de
- * servicio.
+ * Declaración de clase de servicio, que implementa métodos del comportamiento
+ * de ILibroService
  * 
  * @author Jorge Heras
  * @version 0.1 29/09/2021
@@ -21,6 +19,9 @@ import com.nttdata.app.models.entity.Libro;
 @Service
 public class LibroServiceImpl implements ILibroService {
 
+	/**
+	 * Inyección de dependencias
+	 */
 	@Autowired
 	private ILibroDao libroDao;
 
@@ -31,8 +32,8 @@ public class LibroServiceImpl implements ILibroService {
 	 */
 	@Override
 	@Transactional(readOnly = true)
-	public Optional<Libro> findById(Long idLibro) {
-		return libroDao.findById(idLibro);
+	public Libro findById(Long idLibro) {
+		return libroDao.findById(idLibro).orElse(null);
 	}
 
 	/**
